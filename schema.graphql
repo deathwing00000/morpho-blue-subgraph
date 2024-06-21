@@ -25,6 +25,9 @@ enum Network {
   MATIC # aka Polygon
   GNOSIS
   GOERLI
+  AMOY
+  SEPOLIA
+  PREVIEWNET
 }
 
 enum ProtocolType {
@@ -286,7 +289,7 @@ interface Protocol {
   methodologyVersion: String!
 
   " The blockchain network this subgraph is indexing on "
-  network: Network!
+  network: String!
 
   " The type of protocol (e.g. DEX, Lending, Yield, etc) "
   type: ProtocolType!
@@ -366,7 +369,7 @@ type LendingProtocol implements Protocol @entity @regularPolling {
   methodologyVersion: String!
 
   " The blockchain network this subgraph is indexing on "
-  network: Network!
+  network: String!
 
   " The type of protocol (e.g. DEX, Lending, Yield, etc) "
   type: ProtocolType!
