@@ -6,7 +6,7 @@ dataSources:
     name: MorphoBlue
     network: previewnet
     source:
-      address: "0xf95D7990e1B914A176f70e2Bb446F2264a66beb8"
+      address: "0x03148a5aFB38D22371d9Dc229DadE6125e5B8543"
       abi: MorphoBlue
       startBlock: 11193
     mapping:

@@ -22,6 +22,7 @@ services:
       # ethereum: "sepolia:https://eth-sepolia.g.alchemy.com/v2/jXLoZTSjTIhZDB9nNhJsSmvrcMAbdrNT"
       # ethereum: "polygon-amoy:https://polygon-amoy.g.alchemy.com/v2/0YT6W0PZN6UHlAW6cYnGdr8-e1L3jDwM"
       ethereum: "previewnet:https://previewnet.evm.nodes.onflow.org"
+      GRAPH_ETHEREUM_GENESIS_BLOCK_NUMBER: 10000
       
       GRAPH_LOG: info
       # ETHEREUM_BLOCK_BATCH_SIZE: 40
