@@ -13,19 +13,19 @@ import {
 const MORPHO_BLUE_ADDRESS = new Map<string, Address>();
 MORPHO_BLUE_ADDRESS.set(
   "mainnet",
-  Address.fromString("0x8ffEf1310f53060049C6Ac6eD7763f0e473146cE")
+  Address.fromString("0x541cA61EE5f963B150A8c85e774d7bF8236b431E")
 );
 MORPHO_BLUE_ADDRESS.set(
   "sepolia",
-  Address.fromString("0xa138FFFb1C8f8be0896c3caBd0BcA8e4E4A2208d")
+  Address.fromString("0x541cA61EE5f963B150A8c85e774d7bF8236b431E")
 );
 MORPHO_BLUE_ADDRESS.set(
   "polygon-amoy",
-  Address.fromString("0x922eF5033dE5B77BEa830834eC9CAd51a5a61DFA")
+  Address.fromString("0x8ed6929bda0679A59bE264463536c90e8cCa0c06")
 );
 MORPHO_BLUE_ADDRESS.set(
   "previewnet",
-  Address.fromString("0x8ffEf1310f53060049C6Ac6eD7763f0e473146cE")
+  Address.fromString("0xD6D2f23EcD4615264AF70cB2295B5b9DbA8BDbf1")
 );
 
 let protocol: LendingProtocol | null = null;

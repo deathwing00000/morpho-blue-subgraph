@@ -1,6 +1,5 @@
 version: "3"
 services:
-
   indexer:
     image: graphprotocol/graph-node
     ports:
@@ -15,15 +14,15 @@ services:
     environment:
       postgres_host: postgres
       postgres_user: subgraph
-      postgres_pass: let-me-in
+      postgres_pass: "*(n9f3h#ZMtr(ahv"
       postgres_db: subgraph
       ipfs: ipfs:5001
       # ethereum: "mainnet:https://eth-mainnet.g.alchemy.com/v2/8yei2I_LU23eG8eAXP_wN2pS-4JrTa7R"
       # ethereum: "sepolia:https://eth-sepolia.g.alchemy.com/v2/jXLoZTSjTIhZDB9nNhJsSmvrcMAbdrNT"
       # ethereum: "polygon-amoy:https://polygon-amoy.g.alchemy.com/v2/0YT6W0PZN6UHlAW6cYnGdr8-e1L3jDwM"
       ethereum: "previewnet:https://previewnet.evm.nodes.onflow.org"
-      GRAPH_ETHEREUM_GENESIS_BLOCK_NUMBER: 10000
-      
+      GRAPH_ETHEREUM_GENESIS_BLOCK_NUMBER: 15840
+
       GRAPH_LOG: info
       # ETHEREUM_BLOCK_BATCH_SIZE: 40
 
@@ -34,22 +33,47 @@ services:
       - 5001:5001
     volumes:
       - ipfs:/data/ipfs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "1"
 
   postgres:
     image: postgres
-    command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
     environment:
       POSTGRES_USER: subgraph
-      POSTGRES_PASSWORD: let-me-in
+      POSTGRES_PASSWORD: "*(n9f3h#ZMtr(ahv"
       POSTGRES_DB: subgraph
       # FIXME: remove this env. var. which we shouldn't need. Introduced by
       # <https://github.com/graphprotocol/graph-node/pull/3511>, maybe as a
       # workaround for https://github.com/docker/for-mac/issues/6270?
       PGDATA: "/var/lib/postgresql/data"
       POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
+      AUTOVACUUM: "on"
+      AUTOVACUUM_NAPTIME: "60"
+      AUTOVACUUM_VACUUM_THRESHOLD: "50"
+      AUTOVACUUM_ANALYZE_THRESHOLD: "50"
+      AUTOVACUUM_VACUUM_SCALE_FACTOR: "0.1"
+      AUTOVACUUM_ANALYZE_SCALE_FACTOR: "0.05"
+      AUTOVACUUM_FREEZE_MAX_AGE: "200000000"
+      AUTOVACUUM_VACUUM_COST_DELAY: "10ms"
+      AUTOVACUUM_VACUUM_COST_LIMIT: "200"
+      # Логирование
+      LOGGING_COLLECTOR: "on"
+      LOG_ROTATION_AGE: "1d"
+      LOG_ROTATION_SIZE: "100MB"
+      LOG_FILENAME: "postgresql-%Y-%m-%d_%H%M%S.log"
     volumes:
       - data:/var/lib/postgresql/data
+    command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
 
+  log-cleaner:
+    image: alpine:latest
+    volumes:
+      - data:/var/lib/postgresql/data
+    entrypoint: >
+      sh -c "echo '0 0 * * * find /var/lib/postgresql/data/pg_log -type f -mtime +2 -delete' | crontab - && crond -f"
 
 volumes:
   data:
