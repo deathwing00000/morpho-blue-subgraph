@@ -27,6 +27,10 @@ MORPHO_BLUE_ADDRESS.set(
   "previewnet",
   Address.fromString("0xD6D2f23EcD4615264AF70cB2295B5b9DbA8BDbf1")
 );
+MORPHO_BLUE_ADDRESS.set(
+  "testnet",
+  Address.fromString("0x5d7de68283a0afcd5a1411596577cc389cdf4bae")
+);
 
 let protocol: LendingProtocol | null = null;
 export function getProtocol(): LendingProtocol {

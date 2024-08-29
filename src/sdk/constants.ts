@@ -35,6 +35,7 @@ export namespace Network {
   export const SEPOLIA = "SEPOLIA";
   export const POLYGON_AMOY = "POLYGON-AMOY";
   export const PREVIEWNET = "PREVIEWNET";
+  export const TESTNET = "TESTNET";
 }
 
 export namespace ProtocolType {

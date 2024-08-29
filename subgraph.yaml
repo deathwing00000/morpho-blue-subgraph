@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: MorphoBlue
-    network: previewnet
+    network: testnet
     source:
-      address: "0xD6D2f23EcD4615264AF70cB2295B5b9DbA8BDbf1"
+      address: "0x5d7de68283a0afcd5a1411596577cc389cdf4bae"
       abi: MorphoBlue
-      startBlock: 15876
+      startBlock: 98579
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -92,7 +92,7 @@ dataSources:
       file: ./src/morpho-blue.ts
 #   - kind: ethereum
 #     name: MetaMorphoFactory
-#     network: sepolia
+#     network: testnet
 #     source:
 #       address: "0xAEdd54e76E1BC044331bb372c9e3A01c0a240F20"
 #       abi: MetaMorphoFactory
@@ -135,7 +135,7 @@ dataSources:
 # templates:
 #   - kind: ethereum
 #     name: MetaMorpho
-#     network: sepolia
+#     network: testnet
 #     source:
 #       abi: MetaMorpho
 #     mapping:
@@ -249,7 +249,7 @@ dataSources:
 #       file: ./src/meta-morpho.ts
 #   - kind: ethereum
 #     name: ChainlinkAggregatorProxy
-#     network: sepolia
+#     network: testnet
 #     source:
 #       abi: ChainlinkAggregatorProxy
 #     mapping:
@@ -282,7 +282,7 @@ dataSources:
 #       file: ./src/chainlink.ts
 #   - kind: ethereum
 #     name: ChainlinkPriceFeed
-#     network: sepolia
+#     network: testnet
 #     source:
 #       abi: ChainlinkPriceFeed
 #     mapping:

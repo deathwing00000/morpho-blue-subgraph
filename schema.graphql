@@ -28,6 +28,7 @@ enum Network {
   AMOY
   SEPOLIA
   PREVIEWNET
+  TESTNET
 }
 
 enum ProtocolType {
